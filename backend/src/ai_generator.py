@@ -64,18 +64,3 @@ def generate_challenge_with_ai(difficulty: str) -> Dict[str, Any]:
             "correct_answer_id": 0,
             "explanation": "A 'need' is something essential for living, like housing, food, and healthcare. Paying rent is a need, while the other options are wants."
         }
-
-if __name__ == "__main__":
-    print(generate_challenge_with_ai("easy"))
-
-import { useEffect, useState } from "react";
-
-export function MCQChallenge({ challenge }) {
-    const [selected, setSelected] = useState(null);
-
-    useEffect(() => {
-        setSelected(null); // Reset selection when challenge changes
-    }, [challenge]);
-
-    // ...rest of the code...
-}
