@@ -1,9 +1,14 @@
 import "react"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 
-export function MCQChallenge({challenge, showExplanation = false}) {
+export function MCQChallenge({challenge}) {
     const [selectedOption, setSelectedOption] = useState(null)
-    const [shouldShowExplanation, setShouldShowExplanation] = useState(showExplanation)
+    const [shouldShowExplanation, setShouldShowExplanation] = useState(false)
+
+    useEffect(() => {
+        setSelectedOption(null); // Reset selection when challenge changes
+        setShouldShowExplanation(false)
+    }, [challenge])
 
     const options = typeof challenge.options === "string"
         ? JSON.parse(challenge.options)
