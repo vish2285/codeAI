@@ -82,14 +82,15 @@ async def my_history(request: Request, db: Session = Depends(get_db)):
 async def get_quota(request: Request, db: Session = Depends(get_db)):
     user_details = authenticate_and_get_user_details(request)
     user_id = user_details.get("user_id")
+    print("USER_ID:", user_id)
 
     quota = get_challenge_quota(db, user_id)
     if not quota:
-        return {
-            "user_id": user_id,
-            "quota_remaining": 0,
-            "last_reset_date": datetime.now()
-        }
+        quota = create_challenge_quota(db, user_id)
 
     quota = reset_quota_if_needed(db, quota)
-    return quota
+    return {
+        "user_id": quota.user_id,
+        "quota_remaining": quota.quota_remaining,
+        "last_reset_date": quota.last_reset_date
+    }
