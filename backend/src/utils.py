@@ -13,8 +13,8 @@ def authenticate_and_get_user_details(request):
         request_state = clerk_sdk.authenticate_request(
             request,
             AuthenticateRequestOptions(
-                authorized_parties=["http://localhost:5173", "http://localhost:5174", 'http://localhost:5174/', "http://127.0.0.1:5174/", "http://127.0.0.1:5174"],
-                jwt_key=os.getenv("JWT_KEY")
+            authorized_parties=[os.getenv("FRONTEND_URL"), "http://localhost:5173", "http://localhost:5173/" ,"http://localhost:5174", "http://localhost:5174/", "http://127.0.0.1:5173", "http://127.0.0.1:5173/" ],
+            jwt_key=os.getenv("JWT_KEY")
             )
         )
 
