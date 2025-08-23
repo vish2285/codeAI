@@ -13,6 +13,7 @@ backend/.env
 backend/.venv/
 venv/
 backend/venv/
+backend/database/
 
 # Build/dist folders
 dist/
